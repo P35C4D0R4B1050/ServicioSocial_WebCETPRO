@@ -1,0 +1,9 @@
+[Unit]
+Description=keepalive: muestreo cada minuto
+
+[Timer]
+OnCalendar=minutely
+AccuracySec=1s
+
+[Install]
+WantedBy=timers.target

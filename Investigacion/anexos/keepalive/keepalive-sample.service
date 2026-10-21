@@ -1,0 +1,7 @@
+[Unit]
+Description=keepalive: muestra de CPU y memoria
+
+[Service]
+Type=oneshot
+Nice=19
+ExecStart=/usr/local/bin/keepalive.sh sample

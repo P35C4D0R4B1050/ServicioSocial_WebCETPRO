@@ -1,0 +1,10 @@
+[Unit]
+Description=keepalive: ráfaga de CPU de baja prioridad
+
+[Service]
+Type=oneshot
+Nice=19
+CPUWeight=1
+IOWeight=1
+TimeoutStartSec=15min
+ExecStart=/usr/local/bin/keepalive.sh burst

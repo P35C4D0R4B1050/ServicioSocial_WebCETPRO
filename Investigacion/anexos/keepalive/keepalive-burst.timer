@@ -1,0 +1,9 @@
+[Unit]
+Description=keepalive: una ráfaga por hora
+
+[Timer]
+OnCalendar=hourly
+RandomizedDelaySec=10min
+
+[Install]
+WantedBy=timers.target
