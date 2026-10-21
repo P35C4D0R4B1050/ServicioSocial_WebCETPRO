@@ -1,0 +1,157 @@
+# =====================================================================
+# Sistema de Matrícula del CETPRO "Joaquín López Antay"
+# Qué NO entra al repositorio (ver docs/07-proceso-de-desarrollo/02-convenciones-tecnicas.md, sección 1).
+# Regla de oro: ningún dato personal real ni secreto llega al repositorio (AD-36, RNF-18).
+# =====================================================================
+
+# ---------------------------------------------------------------------
+# 1. Secretos y configuración local
+# ---------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.env
+!*.env.example
+secrets/
+*.secrets.json
+*.secret
+appsettings.*.local.json
+appsettings.Local.json
+secrets.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.jks
+*.kdbx
+id_rsa*
+id_ed25519*
+*.ppk
+*.age
+.sops/
+credenciales*
+tokens*.txt
+
+# ---------------------------------------------------------------------
+# 2. Datos reales, respaldos y salidas operativas (nunca versionar)
+# ---------------------------------------------------------------------
+datos-reales/
+datos_reales/
+backups/
+respaldos/
+exportaciones/
+salidas/
+*.dump
+*.backup
+*.bak
+*.sql.gz
+*.sql.zst
+*.sqlite
+*.sqlite3
+*.db
+*.mdf
+*.ldf
+pgdata/
+postgres-data/
+# Archivos generados para AVANZA a partir de datos reales
+avanza-export*/
+*-export-real*
+
+# ---------------------------------------------------------------------
+# 3. Material de terceros o ajeno al proyecto (no se publica)
+# ---------------------------------------------------------------------
+# Norma ISO/IEC 27002:2022 en español: documento con derechos de autor (de pago).
+# Se conserva solo en el equipo; los documentos la citan por su número de control.
+Contexto/Normativa/ISO*.pdf
+# Informe 004: lista nombres de integrantes, tutora y Directora, y la dirección del CETPRO.
+Contexto/Antecedentes/Informe_004*
+# Documentación completa de otro proyecto del equipo (solo referencia local).
+Contexto/DocumentacionEjemplo/
+# Propuesta de otro proyecto (contiene nombres de docente y estudiantes).
+Contexto/Referencia-de-formato/
+
+# ---------------------------------------------------------------------
+# 4. Compilación, dependencias y pruebas
+# ---------------------------------------------------------------------
+bin/
+obj/
+publish/
+out/
+dist/
+build/
+node_modules/
+.pnpm-store/
+.vite/
+vite.config.*.timestamp-*
+*.tsbuildinfo
+TestResults/
+coverage/
+*.coverage
+*.trx
+playwright-report/
+test-results/
+.nuget/
+*.nupkg
+*.snupkg
+BenchmarkDotNet.Artifacts/
+# Resultados de k6 y reportes locales
+k6-resultados/
+*.k6.json
+
+# ---------------------------------------------------------------------
+# 5. Infraestructura como código: estado y variables (contienen secretos)
+# ---------------------------------------------------------------------
+.terraform/
+.tofu/
+.terraform.lock.hcl.bak
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+crash.log
+override.tf
+override.tf.json
+
+# ---------------------------------------------------------------------
+# 6. Herramientas de IA y del editor (estado local)
+# ---------------------------------------------------------------------
+# Se versionan .claude/skills y .claude/agents (las reglas del proyecto), no el estado local.
+.claude/settings.local.json
+.claude/worktrees/
+.claude/scheduled_tasks.lock
+.claude-replay.*
+.plugins/
+.opencode-skills/
+.figma/design-context/
+.vs/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.user
+*.suo
+*.swp
+*~
+
+# ---------------------------------------------------------------------
+# 7. Sistema operativo, Word/Excel y temporales
+# ---------------------------------------------------------------------
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+# Archivos de bloqueo y temporales de Office
+~$*
+.~lock.*
+*.tmp
+.tmp-*
+tmp/
+temp/
+scratch/
+*.log
+logs/
+*-debug.log*
+

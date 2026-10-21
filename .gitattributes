@@ -1,0 +1,32 @@
+# Fin de línea: LF en todo el texto (el equipo trabaja en Windows; el despliegue es Linux).
+* text=auto eol=lf
+
+*.md        text eol=lf
+*.sql       text eol=lf
+*.sh        text eol=lf
+*.service   text eol=lf
+*.timer     text eol=lf
+*.ps1       text eol=lf
+*.json      text eol=lf
+*.html      text eol=lf
+*.css       text eol=lf
+*.ts        text eol=lf
+*.tsx       text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+*.env.example text eol=lf
+
+# Binarios: no se normalizan ni se comparan como texto
+*.docx      binary
+*.xlsx      binary
+*.pdf       binary
+*.png       binary
+*.jpg       binary
+*.jpeg      binary
+*.gif       binary
+*.zip       binary
+*.woff      binary
+*.woff2     binary
+
+# Archivos generados: no se muestran en las diferencias de las revisiones
+pnpm-lock.yaml -diff linguist-generated
