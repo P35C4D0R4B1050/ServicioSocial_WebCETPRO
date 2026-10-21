@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Matrícula | CETPRO Joaquín López Antay (ejecución local)</title>
+    <!--
+      Ejecución local SIN Node: transforma src/App.tsx en el navegador con Babel
+      y carga React desde un CDN. No modifica el proyecto original.
+      Uso: ver local/README.md
+    -->
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@19.0.0",
+          "react/jsx-runtime": "https://esm.sh/react@19.0.0/jsx-runtime",
+          "react-dom/client": "https://esm.sh/react-dom@19.0.0/client?deps=react@19.0.0",
+          "exceljs": "https://esm.sh/exceljs@4.4.0",
+          "jspdf": "https://esm.sh/jspdf@4.2.1",
+          "jspdf-autotable": "https://esm.sh/jspdf-autotable@5.0.8?deps=jspdf@4.2.1"
+        }
+      }
+    </script>
+    <!-- Reemplazo mínimo del reset (preflight) que Tailwind aporta con @import 'tailwindcss' -->
+    <style id="preflight">
+      *,::before,::after{box-sizing:border-box;border:0 solid}
+      html{line-height:1.5;-webkit-text-size-adjust:100%}
+      body{margin:0}
+      h1,h2,h3,h4,h5,h6,p,dl,dd,figure,blockquote{margin:0}
+      h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}
+      button,input,select,textarea{font:inherit;color:inherit;letter-spacing:inherit;background-color:transparent;margin:0}
+      button{cursor:pointer}
+      select{appearance:auto}
+      table{border-collapse:collapse;border-color:inherit;text-indent:0}
+      ol,ul,menu{list-style:none;margin:0;padding:0}
+      img,svg,video{display:block;vertical-align:middle}
+      a{color:inherit;text-decoration:inherit}
+      .rotate-180{transform:rotate(180deg)}
+    </style>
+    <style id="app-css"></style>
+  </head>
+  <body>
+    <div id="root">Cargando el prototipo…</div>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.26.4/babel.min.js"></script>
+    <script type="module">
+      const base = "../src/";
+      try {
+        const css = await (await fetch(base + "index.css")).text();
+        document.getElementById("app-css").textContent = css.replace(
+          /@import\s+['"]tailwindcss['"];?/,
+          "",
+        );
+        const source = await (await fetch(base + "App.tsx")).text();
+        const code = Babel.transform(source, {
+          filename: "App.tsx",
+          presets: [
+            ["typescript", { isTSX: true, allExtensions: true }],
+            ["react", { runtime: "automatic" }],
+          ],
+        }).code;
+        const url = URL.createObjectURL(new Blob([code], { type: "text/javascript" }));
+        const [{ default: App }, React, { createRoot }] = await Promise.all([
+          import(url),
+          import("react"),
+          import("react-dom/client"),
+        ]);
+        createRoot(document.getElementById("root")).render(React.createElement(App));
+      } catch (e) {
+        document.getElementById("root").textContent = "No se pudo iniciar el prototipo: " + e;
+        console.error(e);
+      }
+    </script>
+  </body>
+</html>

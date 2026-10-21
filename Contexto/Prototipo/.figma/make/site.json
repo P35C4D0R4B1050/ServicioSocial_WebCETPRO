@@ -1,0 +1,10 @@
+{
+  "description": "This web application streamlines enrollment management for CETPROs in Peru, enabling staff to efficiently handle student registrations, track specializations, and generate reports.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
